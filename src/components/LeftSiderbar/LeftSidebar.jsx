@@ -12,8 +12,7 @@ const LeftSidebar = () => {
     const { userData, chatData, chatUser, setChatUser, setMessagesId, messageId, chatVisible, setChatVisible } = useContext(AppContext);
     const [user, setUser] = useState(null);
     const [showSearch, setShowSearch] = useState(false);
-    const [loading, setLoading] = useState(false);  // Loading state
-
+    const [loading, setLoading] = useState(false); 
     const inputHandler = async (e) => {
         try {
             const input = e.target.value;
@@ -44,9 +43,9 @@ const LeftSidebar = () => {
     };
 
     const addChat = async () => {
-        if (loading || !user) return;  // Prevent multiple clicks or no user
+        if (loading || !user) return; 
 
-        setLoading(true);  // Set loading to true
+        setLoading(true);  
 
         const messageRef = collection(db, "messages");
         const chatRef = collection(db, "chats");
@@ -89,7 +88,7 @@ const LeftSidebar = () => {
             toast.error(error.message);
             console.error(error);
         } finally {
-            setLoading(false);  // Reset loading state
+            setLoading(false); 
         }
     };
 
@@ -101,10 +100,8 @@ const LeftSidebar = () => {
             const userChatsSnapshot = await getDoc(userChatRef);
             const userChatsData = userChatsSnapshot.data();
             
-            // Find the index of the chat with the specific messageId
             const chatIndex = userChatsData.chatsData.findIndex((c) => c.messageId === item.messageId);
             
-            // Ensure chatIndex is not -1 before attempting to access or update the chat
             if (chatIndex !== -1) {
                 userChatsData.chatsData[chatIndex].messageSeen = true;
                 await updateDoc(userChatRef, {

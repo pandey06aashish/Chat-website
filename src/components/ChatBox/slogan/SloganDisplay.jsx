@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './SloganDisplay.css'
 
 const SloganDisplay = () => {
   const slogans = [
@@ -32,7 +33,7 @@ const SloganDisplay = () => {
   }, []);
 
   return (
-    <div>
+    <div className='slogan'>
       {slogan}
     </div>
   );

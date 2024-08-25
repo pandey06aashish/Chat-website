@@ -108,17 +108,13 @@ const ChatBox = () => {
   const convertTimestamp = (timestamp) => {
     let date;
 
-    // Check if it's a Firestore Timestamp object
     if (timestamp && typeof timestamp.toDate === "function") {
       date = timestamp.toDate();
     } else if (timestamp instanceof Date) {
-      // If it's a regular JavaScript Date object
       date = timestamp;
     } else if (typeof timestamp === "number") {
-      // If it's a JavaScript timestamp (milliseconds since epoch)
       date = new Date(timestamp);
     } else {
-      // Fallback if the format is unexpected
       console.warn("Unexpected timestamp format:", timestamp);
       return "Invalid Date";
     }
@@ -126,19 +122,16 @@ const ChatBox = () => {
     let hour = date.getHours();
     let minute = date.getMinutes();
 
-    // Ensure minutes are always two digits
     minute = minute < 10 ? "0" + minute : minute;
 
     let period = "AM";
 
-    // Adjust for PM
     if (hour >= 12) {
       period = "PM";
       if (hour > 12) {
         hour -= 12;
       }
     } else if (hour === 0) {
-      // Adjust for midnight (00:00)
       hour = 12;
     }
 

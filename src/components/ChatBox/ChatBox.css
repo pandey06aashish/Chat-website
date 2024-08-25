@@ -66,11 +66,12 @@
 
 .chat-msg {
     flex: 1;
-    overflow-y: auto; /* Scrollable messages */
+    overflow-y: auto;
     padding-bottom: 50px;
     display: flex;
     flex-direction: column-reverse;
 }
+
 
 .s-msg div img,.r-msg div img{
   width: 27px;
@@ -116,7 +117,7 @@
     border-radius: 10px;
 }
 
-.chat-welcome{
+.chat-welcome {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -124,7 +125,12 @@
     justify-content: center;
     gap: 5px;
     color: #adadad;
+    background-image: url('/src/assets/wel_msg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
+
 
 .chat-welcome img{
     width: 200px;
@@ -139,6 +145,7 @@
     display: none;
 }
 
+
 @media (max-width:900px){
     .chat-box{
         width: 100%;
@@ -151,3 +158,4 @@
         display: none;
     }
 }
+
